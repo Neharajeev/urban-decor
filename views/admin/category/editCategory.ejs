@@ -1,0 +1,35 @@
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+        <li class="breadcrumb-item "><a href="/admin/category">Category</a></li>
+        <li class="breadcrumb-item active" aria-current="page"> Edit Category</li>
+    </ol>
+</nav>
+
+<div class="card container" style="max-width: 500px;">
+
+    <form action="/admin/editCategory/<%= category._id%>" id="login_form" method="POST" class="card-body">
+        <legend>Edit Category</legend>
+        <div class="mb-3 form-group">
+            <label for="text" class="form-label">Category Name </label>
+            <input class="form-control " id="text" type="text" name="name" value="<%- category.name %>">
+            <small></small>
+        </div>
+        <div class="mb-3 form-group">
+            <label for="text" class="form-label" >Status</label>
+
+            <select class="form-select" aria-label="Default select example" name="status">
+                <% if (category.isDeleted) { %>
+                    <option value="true">Listed</option>
+                    <option value="false">Unlisted</option>
+                    <% } else { %>
+                        <option value="false">Unlisted</option>
+                        <option value="true">Listed</option>
+                        <% } %>
+
+            </select>
+        </div>
+
+        <button class="btn btn-light" type="submit">Submit</button>
+    </form>
+</div>

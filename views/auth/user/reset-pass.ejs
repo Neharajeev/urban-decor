@@ -1,0 +1,18 @@
+<div class="card container" style="max-width: 500px;">
+    <form action="/resetPass" id="reset_pass_form" method="post" class="card-body">
+        <legend>Reset Password</legend>
+        <div class="mb-3 form-group">
+            <label for="password" class="form-label">Enter new password:</label>
+            <input class="form-control" id="password" type="password" name="password" required>
+            <small></small>
+        </div>
+        <div class="mb-3 form-group">
+            <label for="password" class="form-label">Reenter new password:</label>
+            <input class="form-control" id="confirmPassword" type="password" name="confirmPassword" required>
+            <small></small>
+        </div>
+        
+        <button class="btn btn-primary w-100" type="submit">Submit</button>
+    </form>
+</div>
+<script src="/javascripts/resetValidation.js"></script>

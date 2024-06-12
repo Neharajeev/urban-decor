@@ -1,0 +1,41 @@
+<div class="card container" style="max-width: 500px;">
+    <% if (error && error.length > 0) { %>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <%- error %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <% } %>
+    <% if (success && success.length > 0) { %>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <%- success %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <% } %>
+    <form action="/admin/register" id="register_form" method="POST" class="card-body">
+        <legend>Admin Register</legend>
+        <div class="mb-3 form-group">
+            <label for="username" class="form-label">Username: </label>
+            <input class="form-control " id="username" type="username" name="username">
+            <small></small>   
+        </div>
+        <div class="mb-3 form-group">
+            <label for="email" class="form-label">Email: </label>
+            <input class="form-control " id="email" type="email" name="email">
+            <small></small>   
+        </div>
+        <div class="mb-3 form-group">
+            <label for="password" class="form-label">Password: </label>
+            <input class="form-control " id="password" type="password" name="password">
+            <small></small>
+        </div>
+        <div class="mb-3 form-group">
+            <label for="confirmPassword" class="form-label">Confirm Password: </label>
+            <input class="form-control " id="confirmPassword" type="password" name="confirmPassword">
+            <small></small>
+        </div>
+        <button class="btn btn-primary w-100" type="submit">Register</button>
+    </form>
+</div>
+
+
+<script src="/javascripts/registerValidation.js"></script>

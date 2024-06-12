@@ -1,0 +1,56 @@
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Category</li>
+  </ol>
+</nav>
+
+
+
+
+
+<div class="d-flex justify-content-between flex-wrap flex-md nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Categories</h1>
+  <div class="btn-toolbar mb-2 mb-md 0">
+    <div class="btn-group me-2">
+      <a href="/admin/addCategory" class="btn btn-sm btn-outline-primary">+ New Category</a>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- <label for="text"></label>
+  <input id="search" type="text" name="text" placeholder="search" class="form-group"> -->
+
+
+</div>
+<table class="table text-capitalize">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Status</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if (typeof categories !=="undefined" && categories.length > 0) { %>
+      <% categories.forEach((element,index) => { %>
+       <tr>
+         <td><%- index +1 %></td>
+         <td><%- element.name %></td>
+         <td><%- element.isDeleted ? "unlisted" : "listed" %></td>
+         <td>
+          <!-- <a href="" class="btn btn-sm btn-danger">Delete</a> -->
+          <a href="/admin/editCategory/<%= element._id%>" class="btn btn-sm btn-warning">Edit</a>
+          
+       </tr>
+      <% }) %>
+    <% } else { %>
+     <td colspan="4" class="table-warning">No category found</td>
+    <% } %>
+
+
+  </tbody>
+</table>

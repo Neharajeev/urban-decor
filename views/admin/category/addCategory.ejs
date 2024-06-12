@@ -1,0 +1,20 @@
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+        <li class="breadcrumb-item "><a href="/admin/category">Category</a></li>
+        <li class="breadcrumb-item active" aria-current="page"> Add Category</li>
+    </ol>
+</nav>
+
+<div class="card container" style="max-width: 500px;">
+
+    <form action="/admin/addCategory" id="login_form" method="post" class="card-body">
+        <legend>Add New Category</legend>
+        <div class="mb-3 form-group">
+            <label for="text" class="form-label">Category Name </label>
+            <input class="form-control " id="text" type="text" name="categoryName">
+            <small></small>
+        </div>
+        <button class="btn btn-outline-primary" type="submit">Submit</button>
+        </form>
+        </div>

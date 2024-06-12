@@ -1,0 +1,80 @@
+<div class="container my-5">
+    <div class="card mx-auto" style="max-width: 500px;">
+        <div class="card-body">
+            <form action="/otp-verify" id="login_form" method="POST">
+                <legend class="text-center">OTP Verification</legend>
+                <div class="otp-field mb-4">
+                    <div class="form-group mb-4">
+                        <input type="text" name="otp" id="otp" class="form-control">
+                    </div>
+                </div>
+                <div class="text-center mb-3 form-group">
+                    <button class="btn btn-primary" >Verify</button>
+                    <small></small>
+                </div>
+            </form>
+            <div class="card-footer text-center my-3">
+                <p class="lead" id="timer-class">request again in : <span id="timer" class="badge bg-warning"></span>
+                </p>
+                <button class="btn btn-info d-none" id="resend-btn">Resend OTP</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script defer>
+    let timerOn = true
+    const timer = (remaining) => {
+        let min = Math.floor(remaining / 60)
+        let sec = remaining % 60
+
+        min = min < 10 ? "0" + min : min
+        sec = sec < 10 ? "0" + sec : sec
+        document.getElementById("timer").innerHTML = min + ":" + sec
+
+        remaining -= 1
+        if (remaining >= 0 && timerOn) {
+            setTimeout(() => {
+                timer(remaining)
+            }, 1000)
+            return
+        }
+        if (!timerOn) {
+            return
+        }
+        document.getElementById('timer-class').classList.add('d-none')
+        document.getElementById('resend-btn').classList.remove('d-none')
+    }
+    timer(20)
+
+    const resendBtn = document.getElementById('resend-btn')
+    resendBtn.addEventListener('click', async () => {
+        try {
+            let response = await fetch('/resend-otp')
+            console.log(response)
+            if (!response.ok) {
+                throw new Error(response.statusText)
+            }
+            let data = await response.json()
+            console.log(data)
+            if (data.success) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: data.message
+                }).then(()=>{
+                    location.reload()
+                })
+            }else{
+                throw new Error(data.message)
+            }
+
+        } catch (error) {
+            console.error(error)
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: error.message
+            })
+        }
+    })
+</script>

@@ -1,0 +1,40 @@
+<div class="card container" style="max-width: 500px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+   
+    <form action="/register" id="register_form"   method="post"    class="card-body">
+        <legend style="text-align: center; margin-top: 20px; text-decoration: solid; text-decoration: underline;">REGISTER</legend>
+        <div class="mb-3 form-group">
+            <label for="username" class="form-label">Username: </label>
+            <input class="form-control " id="username" type="username" name="username" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);" >
+            <small></small>   
+        </div>
+        <div class="mb-3 form-group">
+            <label for="email" class="form-label">Email: </label>
+            <input class="form-control " id="email" type="email" name="email" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+            <small></small>   
+        </div>
+        <div class="mb-3 form-group">
+            <label for="password" class="form-label">Password: </label>
+            <input class="form-control " id="password" type="password" name="password" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+            <small></small>
+        </div>
+        <div class="mb-3 form-group">
+            <label for="confirmPassword" class="form-label">Confirm Password: </label>
+            <input class="form-control " id="confirmPassword" type="password" name="confirmPassword" style="border-radius: 10px;box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+            <small></small>
+        </div>
+        <button class="btn btn-primary w-100" type="submit" style="border-radius: 10px; margin-top: 10px;">Register</button>
+    </form>
+</div>
+
+
+<script src="/javascripts/registerValidation.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded',function(){
+      let header =  document.querySelector('nav.custom-navbar')
+        if(header){
+            header.style.display='none'
+            
+        }
+        
+    })
+</script>

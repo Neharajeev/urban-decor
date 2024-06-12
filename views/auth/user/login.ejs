@@ -1,0 +1,83 @@
+<div class="card container mt-5" style="max-width: 500px; border-radius: 15px;  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+    <form action="/login" id="register_form" method="post" class="card-body">
+        <legend style="text-align: center; margin: 20px; text-decoration: solid; text-decoration: underline;" >LOGIN</legend>
+        <div class="mb-3 form-group">
+            <label for="email" class="form-label">Email: </label>
+            <input class="form-control" id="email" type="email" name="email" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+            <small></small>   
+        </div>
+        <div class="mb-3 form-group">
+            <label for="password" class="form-label">Password: </label>
+            <input class="form-control" id="password" type="password" name="password" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+            <small></small>
+        </div>
+        <button class="btn btn-primary w-100" type="submit" style="border-radius: 10px;">LOGIN</button>
+        <div class="row">
+            <div class="col-md-6 form-group text-start">
+                <a class="text-primary" href="/forgetPass">Forgot Password?</a>
+            </div>
+            <div class="col-md-6 form-group text-end">
+                <a class="text-primary" href="/register">Create an Account</a>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="/javascripts/loginValidation.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded',function(){
+        let header = document.querySelector('nav.custom-navbar')
+        if(header){
+            header.style.display="none"
+        }
+    })
+</script>
+<script>
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyA9b2WyUM1dFKxpIUDdCpFzHbeT65a3Hlc",
+  authDomain: "express-server-auth-4e92b.firebaseapp.com",
+  projectId: "express-server-auth-4e92b",
+  storageBucket: "express-server-auth-4e92b.appspot.com",
+  messagingSenderId: "988741109941",
+  appId: "1:988741109941:web:da3846b33b9b3a740e56fc"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE)
+document
+.getElementById('login')
+.addEventListener('submit',(event)=>{
+    event.preventDefault()
+    const login = event.target.login.value
+    const password = event.target.password.value
+})
+
+firebase
+.auth()
+.signInWithEmailAndPassword(login,password)
+.then(({user})=>{
+    return user.getIdToken().then((idToken)=>{
+    return fetch('/sessionLogin',{
+        method:"POST",
+        headers:{
+            accept:"application/json",
+            "content-type":"application/json",
+            "CSRF-Token":Cookies.get('XSRF-TOKEN'),
+        },
+        body:JSON.stringify({idToken})
+    })
+    })
+}).then(()=>{
+    return firebase.auth().signOut()
+}).then(()=>{
+    window.location.assign('/profile')
+})
+return false
+
+</script>
