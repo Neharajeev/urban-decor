@@ -21,12 +21,12 @@
                                 <label for="productName" class="form-label">Primary Image</label>
                                 <div class="card">
                                     <img src="/uploads/product-images/crp/<%= product.primaryImages[0].name %>" alt="">
-                                    <% if (product.primaryImages[0].name!=="") { %>
+                                    <% if (product.primaryImages[0].name!=="" ) { %>
                                         <button class="btn btn-sm btn-danger" type="button"
-                                        onclick="deleteImage('<%- product.primaryImages[0].name%>','<%- product._id%>')"><i
-                                            class="bi bi-trash"></i>delete</button>
-                                    <% } %>
-                                   
+                                            onclick="deleteImage('<%- product.primaryImages[0].name%>','<%- product._id%>')"><i
+                                                class="bi bi-trash"></i>delete</button>
+                                        <% } %>
+
                                 </div>
                                 <div class="input-group mb-3">
                                     <input type="file" class="form-control" name="primaryImage" id="inputGroupFile02">
@@ -67,6 +67,24 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="card col-md-12 ">
+                                <div class="card-body">
+                                    <div class="form-group mb-3">
+                                        <div class="card">
+                                            <img src="/uploads/product-images/crp/<%= product.secondaryImages[2]?.name %>"
+                                                alt="">
+                                            <button class="btn btn-sm btn-danger" type="button"
+                                                onclick="deleteImage('<%- product.secondaryImages[2].name %>','<%- product._id%>') "><i
+                                                    class="bi bi-trash"></i>delete</button>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <input type="file" class="form-control" name="secondaryImages2"
+                                                id="inputGroupFile03">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
 
                 </fieldset>
@@ -130,7 +148,7 @@
                             <label for="price" class="form-label">Price</label>
                             <input type="number" name="price" id="price" class="form-control"
                                 value="<%= product.price %>">
-                        </div> 
+                        </div>
                     </div>
                 </div>
 

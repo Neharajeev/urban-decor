@@ -41,7 +41,7 @@ module.exports = {
       }
 
       // Ensure req.files is defined and contains the expected fields
-      if (!req.files || !req.files.images1 || !req.files.primaryImage) {
+      if (!req.files || !req.files.images || !req.files.primaryImage) {
         return res
           .status(400)
           .json({ success: false, message: "Images are required" });
