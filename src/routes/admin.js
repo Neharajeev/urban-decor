@@ -46,8 +46,9 @@ router
   .post(
     productUpload.fields([
       { name: "primaryImage" },
-      { name: "secondaryImages", maxCount: 1 },
       { name: "secondaryImages1", maxCount: 1 },
+      { name: "secondaryImages2", maxCount: 1 },
+      { name: "secondaryImages3", maxCount: 1 },
     ]),
     productsController.editProduct
   );

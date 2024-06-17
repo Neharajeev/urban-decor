@@ -104,6 +104,8 @@ module.exports = {
     }
   },
   getCoupon: async (req, res) => {
-    res.render("admin/coupon/coupon.ejs");
+    res.render("admin/coupon/coupon.ejs", {
+      layout,
+    });
   },
 };
